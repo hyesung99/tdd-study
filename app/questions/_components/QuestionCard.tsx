@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { MessageSquare, ThumbsUp, Calendar, User } from 'lucide-react';
+import { MessageSquare, ThumbsUp, Calendar, User, Lock } from 'lucide-react';
 import type { Question } from '../_types';
 
 interface QuestionCardProps {
@@ -38,6 +38,12 @@ export default function QuestionCard({ question }: QuestionCardProps) {
             <Badge variant="secondary" className="text-xs">
               {question.category}
             </Badge>
+            {!question.isPublic && (
+              <Badge variant="outline" className="text-xs flex items-center gap-1">
+                <Lock className="h-3 w-3" />
+                비공개
+              </Badge>
+            )}
           </div>
         </CardHeader>
 
